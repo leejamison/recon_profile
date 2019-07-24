@@ -52,3 +52,15 @@ python knockpy.py -w list.txt $1
 ncx(){
 nc -l -n -vv -p $1 -k
 }
+
+# EyeWitness installed in domained dir at /opt/domained -- update as necessary
+# $1 -- example.com
+# $2 -- i.e. domains-list.txt
+# creates output directory in current location
+witness(){
+#1 = domain.com
+#2 = URL list
+now="$(date +'%m-%d-%y-%H-%M')"
+mkdir ./output
+/opt/domained/bin/EyeWitness/EyeWitness.py -f $2 --no-prompt --web -d output/$1-$now-EW
+}
